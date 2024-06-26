@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="Chinese" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>外核 + libOS - 第一期傲来操作系统训练营基础阶段学习引导</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="foreword.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="introduce.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="ch1-00.html"><strong aria-hidden="true">3.</strong> 第一章 - 第 1 课(上) - 操作系统简介</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch1-01.html"><strong aria-hidden="true">3.1.</strong> 什么是操作系统</a></li><li class="chapter-item expanded "><a href="ch1-02.html"><strong aria-hidden="true">3.2.</strong> 为什么要有操作系统</a></li><li class="chapter-item expanded "><a href="ch1-03.html"><strong aria-hidden="true">3.3.</strong> RISC-V：操作系统的未来发展方向</a></li></ol></li><li class="chapter-item expanded "><a href="ch2-00.html"><strong aria-hidden="true">4.</strong> 第二章 - 第 1 课(下) - 操作系统结构</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch2-01.html"><strong aria-hidden="true">4.1.</strong> 结构的重要性</a></li><li class="chapter-item expanded "><a href="ch2-02.html"><strong aria-hidden="true">4.2.</strong> 宏内核 & 微内核</a></li><li class="chapter-item expanded "><a href="ch2-03.html" class="active"><strong aria-hidden="true">4.3.</strong> 外核 + libOS</a></li><li class="chapter-item expanded "><a href="ch2-04.html"><strong aria-hidden="true">4.4.</strong> 多内核 / 复内核</a></li></ol></li><li class="chapter-item expanded "><a href="ch3-00.html"><strong aria-hidden="true">5.</strong> 第三章 - 第 2 课(全) - 中断、异常与系统调用</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch3-01.html"><strong aria-hidden="true">5.1.</strong> 中断</a></li><li class="chapter-item expanded "><a href="ch3-02.html"><strong aria-hidden="true">5.2.</strong> 异常</a></li><li class="chapter-item expanded "><a href="ch3-03.html"><strong aria-hidden="true">5.3.</strong> 系统调用</a></li><li class="chapter-item expanded "><a href="ch3-04.html"><strong aria-hidden="true">5.4.</strong> 对比</a></li></ol></li><li class="chapter-item expanded "><a href="ch4-00.html"><strong aria-hidden="true">6.</strong> 第四章 - 第 3 课(上) - 系统初始化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch4-01.html"><strong aria-hidden="true">6.1.</strong> 计算机的启动</a></li><li class="chapter-item expanded "><a href="ch4-02.html"><strong aria-hidden="true">6.2.</strong> BIOS</a></li><li class="chapter-item expanded "><a href="ch4-03.html"><strong aria-hidden="true">6.3.</strong> EFI / UEFI</a></li><li class="chapter-item expanded "><a href="ch4-04.html"><strong aria-hidden="true">6.4.</strong> Grub、Init 与 RunLevel</a></li></ol></li><li class="chapter-item expanded "><a href="ch5-00.html"><strong aria-hidden="true">7.</strong> 第五章 - 第 3 课(下) - Risc-V 的初始化</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch5-01.html"><strong aria-hidden="true">7.1.</strong> 启动流程和链接脚本</a></li><li class="chapter-item expanded "><a href="ch5-02.html"><strong aria-hidden="true">7.2.</strong> 初始化</a></li><li class="chapter-item expanded "><a href="ch5-03.html"><strong aria-hidden="true">7.3.</strong> 从上电到运行</a></li></ol></li><li class="chapter-item expanded "><a href="ch6-00.html"><strong aria-hidden="true">8.</strong> 第六章 - 题目分析[1 - 9]</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch6-01.html"><strong aria-hidden="true">8.1.</strong> MakeFile - 1</a></li><li class="chapter-item expanded "><a href="ch6-02.html"><strong aria-hidden="true">8.2.</strong> MakeFile - 2</a></li><li class="chapter-item expanded "><a href="ch6-03.html"><strong aria-hidden="true">8.3.</strong> MakeFile - 3</a></li><li class="chapter-item expanded "><a href="ch6-04.html"><strong aria-hidden="true">8.4.</strong> MakeFile - 4</a></li><li class="chapter-item expanded "><a href="ch6-05.html"><strong aria-hidden="true">8.5.</strong> MakeFile - 5</a></li><li class="chapter-item expanded "><a href="ch6-06.html"><strong aria-hidden="true">8.6.</strong> ld 脚本 - 11</a></li><li class="chapter-item expanded "><a href="ch6-07.html"><strong aria-hidden="true">8.7.</strong> ld 脚本 - 12</a></li><li class="chapter-item expanded "><a href="ch6-08.html"><strong aria-hidden="true">8.8.</strong> ld 脚本 - 13</a></li><li class="chapter-item expanded "><a href="ch6-09.html"><strong aria-hidden="true">8.9.</strong> ld 脚本 - 14</a></li></ol></li><li class="chapter-item expanded "><a href="ch7-00.html"><strong aria-hidden="true">9.</strong> 第七章 - 题目分析[10 - 20]</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch7-01.html"><strong aria-hidden="true">9.1.</strong> 数据结构 - 队列 - 20</a></li><li class="chapter-item expanded "><a href="ch7-02.html"><strong aria-hidden="true">9.2.</strong> 数据结构 - 队列 - 21</a></li><li class="chapter-item expanded "><a href="ch7-03.html"><strong aria-hidden="true">9.3.</strong> 内核模块 - 30</a></li><li class="chapter-item expanded "><a href="ch7-04.html"><strong aria-hidden="true">9.4.</strong> 内核模块 - 31</a></li><li class="chapter-item expanded "><a href="ch7-05.html"><strong aria-hidden="true">9.5.</strong> 内核模块 - 32</a></li><li class="chapter-item expanded "><a href="ch7-06.html"><strong aria-hidden="true">9.6.</strong> 内核模块 - 33</a></li><li class="chapter-item expanded "><a href="ch7-07.html"><strong aria-hidden="true">9.7.</strong> 内核模块 - 34</a></li><li class="chapter-item expanded "><a href="ch7-08.html"><strong aria-hidden="true">9.8.</strong> 内核模块 - 35</a></li><li class="chapter-item expanded "><a href="ch7-09.html"><strong aria-hidden="true">9.9.</strong> Risc-V 汇编 - 40</a></li><li class="chapter-item expanded "><a href="ch7-10.html"><strong aria-hidden="true">9.10.</strong> Risc-V 汇编 - 41</a></li><li class="chapter-item expanded "><a href="ch7-11.html"><strong aria-hidden="true">9.11.</strong> Risc-V 汇编 - 42</a></li></ol></li><li class="chapter-item expanded "><a href="ap-A.html"><strong aria-hidden="true">10.</strong> 附录 A - 可供参考的各种资料汇总</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">第一期傲来操作系统训练营基础阶段学习引导</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="外核--libos"><a class="header" href="#外核--libos">外核 + libOS</a></h1>
+<h2 id="本节目录"><a class="header" href="#本节目录">本节目录</a></h2>
+<ul>
+<li><a href="#%E5%A4%96%E6%A0%B8--libos">外核 + libOS</a>
+<ul>
+<li><a href="#%E6%9C%AC%E8%8A%82%E7%9B%AE%E5%BD%95">本节目录</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%96%E6%A0%B8%E4%B8%8E-libos">什么是外核与 libOS</a></li>
+<li><a href="#%E5%8D%95%E5%86%85%E6%A0%B8">单内核</a></li>
+<li><a href="#%E5%A4%96%E6%A0%B8%E7%9A%84%E4%BC%98%E7%82%B9">外核的优点</a></li>
+<li><a href="#%E5%A4%96%E6%A0%B8%E7%9A%84%E7%BC%BA%E7%82%B9">外核的缺点</a></li>
+<li><a href="#%E5%A4%96%E6%A0%B8-vs-%E8%99%9A%E6%8B%9F%E6%9C%BA">外核 VS 虚拟机</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是外核与-libos"><a class="header" href="#什么是外核与-libos">什么是外核与 libOS</a></h2>
+<p>外核：</p>
+<ul>
+<li>Exokernel 不提供硬件抽象
+<ul>
+<li>“只要内核提供抽象，就不能实现性能最大化"</li>
+<li>只有应用才知道最适合的抽象(end-to-end 原则)</li>
+</ul>
+</li>
+<li>Exokernel 不管理资源，只管理应用
+<ul>
+<li>负责将计算资源与应用的绑定，以及资源的回收</li>
+<li>保证多个应用之间的隔离</li>
+</ul>
+</li>
+</ul>
+<p>库 OS(Libos)：</p>
+<ul>
+<li>策略与机制分离：将对硬件的抽象以库的形式提供</li>
+<li>高度定制化：不同应用可使用不同的 LibOS，或完全自定义</li>
+<li>更高性能：Lib0s 与应用其他代码之间通过函数调用直接交互</li>
+</ul>
+<p>对于外核，图示如下：</p>
+<p><img src="./resource/%E5%A4%96%E6%A0%B8.png" alt="" /></p>
+<p>外核拥有与宏内核和微内核不同的功能，因此也提出了新的技术。</p>
+<p>为了追踪计算资源的拥有权，采用了安全绑定(Secure binding)；为了保证资源的保护，采用了显式回收(Visible revocation)；同时，为了能够回收对资源的访问权，额外增加了中止协议(Abort protocol)。建议同学们对这部分内容进行自学。</p>
+<h2 id="单内核"><a class="header" href="#单内核">单内核</a></h2>
+<p>LibOS 可以进一步拓展为单内核，即一个内核管理多个应用。</p>
+<p>单内核可以看做虚拟化环境下的 LibOS，每个虚拟机只使用内核态，在内核态中只运行一个应用和 LibOS，同时，通过虚拟化层实现不同实例间的隔离。</p>
+<p>单内核非常适合容器应用场景，因为每个容器就是一个虚拟机，而且每个容器运行定制的 LibOS，可以有效提高性能。</p>
+<p>对于单内核的开源项目，我们搜集到以下内容，感兴趣的同学可以进行自学：</p>
+<ul>
+<li>Rumprun：POSIX 接口，BSD 兼容的运行时环境，运行在 Xen 虚拟化平台之上</li>
+<li>Drawbridge：来自微软，兼容 Win32 接口的运行时环境</li>
+<li>OSv：与 Linux 兼容的应用环境，单地址空间</li>
+</ul>
+<p>同时，既然涉及到“LibOS”，就可以回到我们上一章提到的问题：操作系统能不能作为一个库？对于这个问题，有人提出了“Linux as a LibOS”，将 Linux 作为 LibOS 或 Unikernel 运行，但引入了很多新问题：</p>
+<ul>
+<li>Linux 是否适合作为 LibOS/unikernel?</li>
+<li>fork()如何处理?</li>
+</ul>
+<p>此技术尚在探索阶段，感兴趣的同学可以进行自学。一个类似的例子是：LKL-Linux kernel library(https://github.com/lkl)</p>
+<h2 id="外核的优点"><a class="header" href="#外核的优点">外核的优点</a></h2>
+<ul>
+<li>OS 无抽象，能在理论上提供最优性能</li>
+<li>应用对计算有更精确的实时等控制</li>
+<li>LibOS 在用户态更易调试，调试周期更短</li>
+</ul>
+<h2 id="外核的缺点"><a class="header" href="#外核的缺点">外核的缺点</a></h2>
+<ul>
+<li>对计算资源的利用效率主要由应用决定</li>
+<li>定制化过多，导致维护难度增加</li>
+</ul>
+<h2 id="外核-vs-虚拟机"><a class="header" href="#外核-vs-虚拟机">外核 VS 虚拟机</a></h2>
+<p>以下是对于外核与虚拟机的对比，感兴趣的同学可以搜集相关资料自学。</p>
+<p><img src="./resource/%E5%A4%96%E6%A0%B8%E8%99%9A%E6%8B%9F%E6%9C%BA.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch2-02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ch2-04.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch2-02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ch2-04.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
