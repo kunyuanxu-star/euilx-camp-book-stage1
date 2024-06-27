@@ -6,6 +6,7 @@
   - [本节目录](#本节目录)
   - [Risc-V 参考文献](#risc-v-参考文献)
   - [Linux 内核文档](#linux-内核文档)
+  - [Risc-V 开发板上的 Linux 启动流程](#risc-v开发板上的linux启动流程)
 
 ## Risc-V 参考文献
 
@@ -17,3 +18,7 @@
 ## Linux 内核文档
 
 [https://www.kernel.org/doc/html/v6.9-rc7/index.html](https://www.kernel.org/doc/html/v6.9-rc7/index.html)
+
+## Risc-V 开发板上的 Linux 启动流程
+
+[https://linux-sunxi.org/Allwinner_Nezha](https://linux-sunxi.org/Allwinner_Nezha)
